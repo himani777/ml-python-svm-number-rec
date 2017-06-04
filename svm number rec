@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt  #pyplot is used to plot a chart
+from sklearn import datasets  #datasets are used as a sample dataset, contains set that has number recognition data
+from sklearn import svm  #for the sklearn Support Vector Machine
+digits = datasets.load_digits()  #digits variable loaded with digit dataset
+#print(digits.data)  #features (actual data)
+#print(digits.target) #label assigned to data
+clf = svm.SVC()  #specify the classifier using defaults
+clf = svm.SVC(gamma=0.001, C=100) #specify the classifier
+X, y = digits.data[:-10], digits.target[:-10]
+clf.fit(X, y)  #train
+print("Prediction: ", clf.predict(digits.data[8]))
+#visualization
+plt.imshow(digits.images[8], cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
